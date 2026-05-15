@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>天坛祈年殿 | The Hall of Prayer for Good Harvests</title>
+  <style>
+    :root{
+      --navy:#071633;
+      --deep:#030914;
+      --blue:#123f8f;
+      --tile:#0f5aaa;
+      --gold:#e7bc62;
+      --gold2:#fff0b3;
+      --red:#a92d25;
+      --paper:#fff8e9;
+      --muted:rgba(255,248,233,.68);
+      --line:rgba(255,226,150,.25);
+      --glass:rgba(5,18,42,.62);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--paper);
+      font-family: "Noto Serif SC", "Songti SC", SimSun, Georgia, serif;
+      background:
+        radial-gradient(circle at 50% -10%, rgba(231,188,98,.32), transparent 34%),
+        radial-gradient(circle at 15% 18%, rgba(31,112,210,.26), transparent 30%),
+        linear-gradient(180deg,#06152f 0%,#071633 46%,#030914 100%);
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.22;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size:46px 46px;
+      mask-image:linear-gradient(to bottom,transparent,black 15%,black 85%,transparent);
+      z-index:0;
+    }
+
+    .nav{
+      position:fixed;
+      z-index:50;
+      top:18px;
+      left:50%;
+      transform:translateX(-50%);
+      width:min(1180px, calc(100vw - 32px));
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:12px 18px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(4,14,32,.62);
+      backdrop-filter:blur(18px);
+      box-shadow:0 20px 60px rgba(0,0,0,.28);
+    }
+    .brand{display:flex;align-items:center;gap:12px;color:var(--gold2);font-size:15px;letter-spacing:.08em;white-space:nowrap}
+    .seal{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,var(--gold2),var(--gold));color:#071633;font-weight:900}
+    .nav a{color:rgba(255,248,233,.76);text-decoration:none;margin-left:18px;font-size:13px;letter-spacing:.04em}
+    .nav a:hover{color:var(--gold2)}
+
+    .hero{
+      position:relative;
+      z-index:1;
+      min-height:100vh;
+      display:grid;
+      grid-template-columns:1fr 1.05fr;
+      gap:44px;
+      align-items:center;
+      padding:120px 6vw 70px;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      width:620px;height:620px;border-radius:50%;
+      right:8vw;top:12vh;
+      border:1px solid rgba(255,226,150,.22);
+      box-shadow:inset 0 0 90px rgba(231,188,98,.08),0 0 110px rgba(231,188,98,.10);
+      z-index:-1;
+      animation:turn 36s linear infinite;
+    }
+    @keyframes turn{to{transform:rotate(360deg)}}
+
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:12px;
+      color:var(--gold2);
+      border:1px solid rgba(255,226,150,.28);
+      border-radius:999px;
+      padding:10px 15px;
+      background:rgba(255,226,150,.08);
+      letter-spacing:.24em;
+      font-size:13px;
+      text-transform:uppercase;
+    }
+    .eyebrow::before{content:"";width:36px;height:1px;background:var(--gold2)}
+
+    h1{
+      margin:26px 0 18px;
+      font-size:clamp(62px,9vw,138px);
+      line-height:.88;
+      letter-spacing:-.08em;
+      color:transparent;
+      background:linear-gradient(110deg,#fff9df 0%,#ffe696 24%,#fffef5 48%,#d89c38 76%,#fff0b3 100%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      filter:drop-shadow(0 20px 50px rgba(0,0,0,.45));
+      white-space:nowrap;
+    }
+    .subtitle{
+      font-family:Georgia,serif;
+      font-size:clamp(23px,2.3vw,38px);
+      color:#f8e6ad;
+      line-height:1.18;
+      margin-bottom:26px;
+    }
+    .lead{
+      max-width:650px;
+      font-size:clamp(19px,1.45vw,24px);
+      line-height:1.65;
+      color:rgba(255,248,233,.88);
+    }
+    .lead-en{font-family:Georgia,serif;color:rgba(255,248,233,.63);font-size:17px;line-height:1.6;margin-top:14px}
+
+    .hero-stack{position:relative;min-height:650px;display:grid;place-items:center}
+    .main-photo{
+      width:min(630px,92vw);
+      height:76vh;
+      min-height:560px;
+      border-radius:44px;
+      overflow:hidden;
+      border:1px solid rgba(255,226,150,.30);
+      box-shadow:0 34px 100px rgba(0,0,0,.48);
+      transform:rotateY(-7deg) rotateX(2deg);
+      background:#000;
+    }
+    .main-photo img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.12) contrast(1.04)}
+    .floating-note{
+      position:absolute;
+      left:0;bottom:36px;
+      width:min(420px,80vw);
+      padding:22px 24px;
+      border-radius:28px;
+      background:rgba(3,11,25,.68);
+      border:1px solid rgba(255,226,150,.28);
+      backdrop-filter:blur(15px);
+      box-shadow:0 20px 60px rgba(0,0,0,.32);
+    }
+    .floating-note strong{display:block;color:var(--gold2);font-size:26px;margin-bottom:8px}
+    .floating-note span{font-family:Georgia,serif;color:rgba(255,248,233,.66);font-size:15px;line-height:1.5}
+
+    section{position:relative;z-index:2;padding:92px 6vw}
+    .inner{width:min(1220px,100%);margin:0 auto}
+    .section-title{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:34px}
+    h2{margin:0;font-size:clamp(36px,5vw,76px);line-height:1;letter-spacing:-.055em;color:#fff2bd}
+    h2 span{display:block;margin-top:11px;font-size:clamp(16px,1.6vw,24px);letter-spacing:.02em;color:rgba(255,248,233,.58);font-weight:400;font-family:Georgia,serif}
+    .mark{font-size:86px;color:rgba(255,226,150,.34);line-height:1;font-weight:900}
+
+    .story-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+    .story-card{
+      min-height:300px;
+      padding:30px;
+      border-radius:32px;
+      background:linear-gradient(180deg,rgba(255,248,233,.10),rgba(255,248,233,.045));
+      border:1px solid rgba(255,226,150,.20);
+      box-shadow:0 26px 80px rgba(0,0,0,.25);
+    }
+    .story-card .num{font-size:46px;color:var(--gold2);font-weight:900;letter-spacing:-.06em;margin-bottom:22px}
+    .story-card h3{margin:0 0 12px;color:#fff4c7;font-size:28px;line-height:1.18}
+    p{margin:0;color:rgba(255,248,233,.72);font-size:17px;line-height:1.72}
+    p.en{font-family:Georgia,serif;color:rgba(255,248,233,.56);font-size:15px;margin-top:10px;line-height:1.62}
+
+    .cinema{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:18px;
+    }
+    .big-img,.side-img,.wide-img,.square-img{
+      position:relative;overflow:hidden;border-radius:34px;
+      border:1px solid rgba(255,226,150,.18);
+      background:#071633;
+      box-shadow:0 25px 80px rgba(0,0,0,.28);
+    }
+    .big-img{min-height:650px}
+    .side-col{display:grid;gap:18px}
+    .side-img{min-height:316px}
+    .wide-img{min-height:420px}
+    .square-img{min-height:420px}
+    .big-img img,.side-img img,.wide-img img,.square-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease,filter .8s ease;filter:saturate(1.08) contrast(1.03)}
+    .big-img:hover img,.side-img:hover img,.wide-img:hover img,.square-img:hover img{transform:scale(1.045);filter:saturate(1.16) contrast(1.06)}
+    .cap{
+      position:absolute;left:18px;right:18px;bottom:18px;
+      padding:16px 18px;border-radius:22px;
+      background:rgba(3,11,25,.66);border:1px solid rgba(255,226,150,.24);backdrop-filter:blur(12px);
+    }
+    .cap strong{display:block;color:#fff2bd;font-size:22px;margin-bottom:4px}
+    .cap span{font-family:Georgia,serif;color:rgba(255,248,233,.58);font-size:14px}
+
+    .split{display:grid;grid-template-columns:.92fr 1.08fr;gap:26px;align-items:stretch}
+    .text-panel{
+      padding:38px;border-radius:36px;
+      background:linear-gradient(180deg,rgba(7,22,51,.82),rgba(8,20,38,.66));
+      border:1px solid rgba(255,226,150,.20);
+      display:flex;flex-direction:column;justify-content:center;
+    }
+    .text-panel h3{margin:0 0 18px;color:#fff2bd;font-size:42px;line-height:1.1;letter-spacing:-.04em}
+    .keywords{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+    .tag{border:1px solid rgba(255,226,150,.25);background:rgba(255,226,150,.08);color:#f9e5a5;border-radius:999px;padding:9px 13px;font-size:14px}
+
+    .details-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .detail-card{position:relative;min-height:420px;overflow:hidden;border-radius:34px;border:1px solid rgba(255,226,150,.18);box-shadow:0 24px 70px rgba(0,0,0,.26)}
+    .detail-card img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.1)}
+    .detail-card.tall{min-height:560px}
+
+    .meaning{
+      min-height:620px;
+      display:grid;align-items:end;
+      border-top:1px solid rgba(255,226,150,.18);
+      border-bottom:1px solid rgba(255,226,150,.18);
+      background:
+        linear-gradient(90deg,rgba(3,9,20,.92),rgba(3,9,20,.40),rgba(3,9,20,.88)),
+        url('images/tp4.jpg') center/cover no-repeat;
+      padding:90px 6vw;
+    }
+    .meaning-copy{width:min(900px,90vw)}
+    .meaning-copy h2{font-size:clamp(42px,5.6vw,88px)}
+    .meaning-copy p{font-size:clamp(20px,2vw,28px);color:rgba(255,248,233,.82);line-height:1.58;margin-top:22px}
+    .meaning-copy .en{font-size:17px;color:rgba(255,248,233,.60)}
+
+    .data-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:14px;margin-top:20px}
+    .data-card{
+      min-height:180px;
+      padding:26px 18px;
+      border-radius:30px;
+      text-align:center;
+      background:linear-gradient(180deg,rgba(255,226,150,.13),rgba(255,248,233,.055));
+      border:1px solid rgba(255,226,150,.22);
+      box-shadow:0 22px 60px rgba(0,0,0,.24);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      transition:.35s ease;
+    }
+    .data-card:hover{transform:translateY(-6px);border-color:rgba(255,226,150,.52);background:rgba(255,226,150,.14)}
+    .data-card .big{
+      font-family:Georgia,serif;
+      font-size:clamp(40px,4vw,62px);
+      line-height:1;
+      color:var(--gold2);
+      font-weight:900;
+      letter-spacing:-.06em;
+      text-shadow:0 0 30px rgba(231,188,98,.28);
+    }
+    .data-card .label{margin-top:14px;color:#fff2bd;font-size:18px;font-weight:700;letter-spacing:.04em}
+    .data-card .en{margin-top:6px;color:rgba(255,248,233,.52);font-family:Georgia,serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;line-height:1.35}
+
+    .final-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .mini-card{padding:24px;border-radius:28px;border:1px solid rgba(255,226,150,.18);background:rgba(255,248,233,.075);min-height:230px}
+    .mini-card strong{display:block;color:#fff2bd;font-size:25px;line-height:1.2;margin-bottom:12px}
+    .mini-card small{display:block;color:rgba(255,248,233,.54);font-family:Georgia,serif;font-size:13px;line-height:1.55;margin-top:10px}
+
+    .footer{padding:52px 6vw 80px;text-align:center;color:rgba(255,248,233,.55);border-top:1px solid rgba(255,226,150,.12)}
+    .footer strong{color:var(--gold2)}
+
+    .reveal{opacity:0;transform:translateY(32px);transition:1s cubic-bezier(.2,.8,.2,1)}
+    .reveal.show{opacity:1;transform:none}
+
+    @media(max-width:1050px){
+      h1{white-space:normal}
+      .hero,.cinema,.split{grid-template-columns:1fr}
+      .main-photo{height:64vh;transform:none}
+      .story-grid,.final-grid{grid-template-columns:1fr 1fr}
+      .data-grid{grid-template-columns:repeat(3,1fr)}
+      .nav-links{display:none}
+    }
+    @media(max-width:720px){
+      .hero,section{padding-left:22px;padding-right:22px}
+      .story-grid,.details-grid,.final-grid{grid-template-columns:1fr}
+      .data-grid{grid-template-columns:1fr 1fr}
+      .section-title{display:block}.mark{display:none}
+      .floating-note{position:relative;margin-top:-80px;left:auto;bottom:auto}
+      .big-img,.side-img,.wide-img,.square-img,.detail-card,.detail-card.tall{min-height:360px}
+    }
+
+
+    /* === Regal interactive enhancement layer: text/layout/images unchanged === */
+    :root{
+      --gold-rim:rgba(255,230,150,.54);
+      --gold-haze:rgba(231,188,98,.22);
+      --vermilion-glow:rgba(169,45,37,.18);
+      --cursor-x:50vw;
+      --cursor-y:50vh;
+    }
+
+    body{
+      background:
+        radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(255,226,150,.10), transparent 24vw),
+        radial-gradient(circle at 50% -10%, rgba(231,188,98,.36), transparent 34%),
+        radial-gradient(circle at 85% 12%, rgba(169,45,37,.18), transparent 26%),
+        radial-gradient(circle at 15% 18%, rgba(31,112,210,.30), transparent 30%),
+        linear-gradient(180deg,#06152f 0%,#071633 46%,#030914 100%);
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      inset:-20%;
+      pointer-events:none;
+      z-index:0;
+      opacity:.32;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,226,150,.22), transparent 16%),
+        repeating-conic-gradient(from 0deg at 50% 16%, rgba(255,226,150,.07) 0deg 1deg, transparent 1deg 11deg);
+      mask-image:radial-gradient(circle at 50% 14%, black, transparent 54%);
+      animation:celestialSweep 58s linear infinite;
+    }
+
+    .cursor-aura{
+      position:fixed;
+      left:0;top:0;
+      width:340px;height:340px;
+      border-radius:50%;
+      pointer-events:none;
+      z-index:3;
+      opacity:.55;
+      transform:translate3d(calc(var(--cursor-x) - 170px), calc(var(--cursor-y) - 170px), 0);
+      background:radial-gradient(circle, rgba(255,235,170,.18), rgba(255,235,170,.07) 34%, transparent 70%);
+      mix-blend-mode:screen;
+      transition:transform .12s linear, opacity .3s ease;
+    }
+
+    .nav{
+      box-shadow:0 20px 60px rgba(0,0,0,.30), inset 0 0 0 1px rgba(255,255,255,.05), 0 0 34px rgba(231,188,98,.10);
+    }
+    .nav::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      pointer-events:none;
+      background:linear-gradient(100deg, transparent, rgba(255,238,180,.16), transparent);
+      transform:translateX(-120%);
+      animation:navGleam 7s ease-in-out infinite;
+    }
+    .seal{
+      position:relative;
+      box-shadow:0 0 0 1px rgba(255,246,214,.7), 0 0 28px rgba(231,188,98,.34);
+      animation:sealPulse 4.6s ease-in-out infinite;
+    }
+    .nav a{position:relative;transition:color .25s ease,text-shadow .25s ease}
+    .nav a::after{
+      content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;
+      background:linear-gradient(90deg,transparent,var(--gold2),transparent);
+      transform:scaleX(0);transform-origin:center;transition:transform .3s ease;
+    }
+    .nav a:hover::after{transform:scaleX(1)}
+    .nav a:hover{text-shadow:0 0 18px rgba(255,226,150,.42)}
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:5% 3% auto auto;
+      width:42vw;height:42vw;min-width:360px;min-height:360px;
+      pointer-events:none;
+      border-radius:50%;
+      background:
+        radial-gradient(circle, transparent 46%, rgba(255,226,150,.16) 47%, transparent 48%),
+        repeating-conic-gradient(from 18deg, rgba(255,226,150,.13) 0deg 1deg, transparent 1deg 12deg);
+      opacity:.34;
+      filter:blur(.1px);
+      animation:slowHalo 44s linear infinite reverse;
+      z-index:-1;
+    }
+
+    .eyebrow{
+      position:relative;
+      overflow:hidden;
+      box-shadow:inset 0 0 22px rgba(255,226,150,.08), 0 0 26px rgba(231,188,98,.08);
+    }
+    .eyebrow::after{
+      content:"";
+      position:absolute;inset:0;
+      background:linear-gradient(110deg,transparent 0%,rgba(255,249,220,.28) 45%,transparent 68%);
+      transform:translateX(-120%);
+      animation:tagShine 5.8s ease-in-out infinite;
+    }
+
+    h1{
+      position:relative;
+      background-size:260% 100%;
+      animation:goldFlow 8.5s ease-in-out infinite;
+      text-shadow:0 0 1px rgba(255,244,203,.55), 0 0 30px rgba(231,188,98,.26), 0 18px 55px rgba(0,0,0,.55);
+    }
+    h1::after{
+      content:"天坛祈年殿";
+      position:absolute;
+      left:0;top:0;
+      color:transparent;
+      background:linear-gradient(100deg, transparent 10%, rgba(255,255,255,.95) 47%, transparent 66%);
+      -webkit-background-clip:text;background-clip:text;
+      background-size:230% 100%;
+      animation:titleBlade 6.5s ease-in-out infinite;
+      opacity:.78;
+      pointer-events:none;
+      filter:drop-shadow(0 0 16px rgba(255,235,170,.35));
+    }
+    .subtitle,.lead,.lead-en{animation:textBreath 7s ease-in-out infinite}
+
+    h2,.text-panel h3,.cap strong,.mini-card strong,.floating-note strong{
+      text-shadow:0 0 20px rgba(231,188,98,.15), 0 1px 0 rgba(255,255,255,.08);
+    }
+    h2{
+      background:linear-gradient(96deg,#fff8d5,#e7bc62,#fff4c7,#bb7d24);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      background-size:220% 100%;
+      animation:sectionGold 12s ease-in-out infinite;
+    }
+    h2 span{color:rgba(255,248,233,.58);background:none;-webkit-background-clip:initial;background-clip:initial;animation:none;text-shadow:none}
+    .section-title{position:relative}
+    .section-title::after{
+      content:"";
+      position:absolute;left:0;bottom:-16px;width:0;height:1px;
+      background:linear-gradient(90deg,rgba(255,226,150,.85),rgba(255,226,150,.12),transparent);
+      transition:width 1.2s cubic-bezier(.2,.8,.2,1);
+    }
+    .reveal.show .section-title::after{width:100%}
+    .mark{filter:drop-shadow(0 0 28px rgba(231,188,98,.18));animation:markFloat 6s ease-in-out infinite}
+
+    .story-card,.text-panel,.mini-card,.data-card,.floating-note{
+      position:relative;
+      overflow:hidden;
+      transition:transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s ease, box-shadow .45s ease, background .45s ease;
+    }
+    .story-card::before,.text-panel::before,.mini-card::before,.data-card::before,.floating-note::before{
+      content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.10), transparent 26%),
+        radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(255,226,150,.22), transparent 34%);
+      opacity:0;transition:opacity .35s ease;
+    }
+    .story-card::after,.text-panel::after,.mini-card::after,.data-card::after,.floating-note::after,
+    .big-img::after,.side-img::after,.wide-img::after,.square-img::after,.detail-card::after,.main-photo::after{
+      content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;padding:1px;
+      background:linear-gradient(135deg, rgba(255,244,190,.62), transparent 28%, rgba(31,112,210,.20) 55%, rgba(255,226,150,.38));
+      -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+      -webkit-mask-composite:xor;mask-composite:exclude;
+      opacity:.48;
+    }
+    .story-card:hover,.mini-card:hover,.text-panel:hover{
+      transform:translateY(-8px);
+      border-color:rgba(255,226,150,.46);
+      box-shadow:0 34px 95px rgba(0,0,0,.34),0 0 45px rgba(231,188,98,.12);
+    }
+    .story-card:hover::before,.text-panel:hover::before,.mini-card:hover::before,.data-card:hover::before,.floating-note:hover::before{opacity:1}
+    .story-card h3,.mini-card strong,.text-panel h3{transition:letter-spacing .35s ease,color .35s ease}
+    .story-card:hover h3,.mini-card:hover strong,.text-panel:hover h3{letter-spacing:.01em;color:#fff8db}
+
+    .big-img,.side-img,.wide-img,.square-img,.detail-card,.main-photo{
+      transform-style:preserve-3d;
+      transition:transform .55s cubic-bezier(.2,.8,.2,1), box-shadow .55s ease, border-color .55s ease, filter .55s ease;
+    }
+    .big-img::before,.side-img::before,.wide-img::before,.square-img::before,.detail-card::before,.main-photo::before{
+      content:"";position:absolute;inset:0;pointer-events:none;z-index:2;
+      background:radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(255,238,184,.26), transparent 28%), linear-gradient(180deg, transparent 40%, rgba(3,9,20,.16));
+      opacity:0;transition:opacity .4s ease;
+    }
+    .big-img:hover,.side-img:hover,.wide-img:hover,.square-img:hover,.detail-card:hover{
+      border-color:rgba(255,226,150,.44);
+      box-shadow:0 34px 105px rgba(0,0,0,.38), 0 0 52px rgba(231,188,98,.12);
+    }
+    .big-img:hover::before,.side-img:hover::before,.wide-img:hover::before,.square-img:hover::before,.detail-card:hover::before,.main-photo:hover::before{opacity:1}
+    .detail-card img{transition:transform .8s ease,filter .8s ease}
+    .detail-card:hover img{transform:scale(1.045);filter:saturate(1.18) contrast(1.05)}
+    .cap{transition:transform .42s ease, background .42s ease,border-color .42s ease;z-index:3}
+    figure:hover .cap{transform:translateY(-4px);background:rgba(3,11,25,.76);border-color:rgba(255,226,150,.45)}
+
+    .tag{
+      position:relative;overflow:hidden;transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease;
+    }
+    .tag::after{
+      content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent,rgba(255,244,200,.22),transparent);transform:translateX(-115%);transition:transform .65s ease;
+    }
+    .tag:hover{transform:translateY(-3px);border-color:rgba(255,226,150,.55);box-shadow:0 0 22px rgba(231,188,98,.12)}
+    .tag:hover::after{transform:translateX(115%)}
+
+    .meaning{background-attachment:fixed;position:relative;overflow:hidden}
+    .meaning::before{
+      content:"";position:absolute;inset:0;pointer-events:none;
+      background:linear-gradient(120deg,transparent 10%,rgba(255,226,150,.11) 48%,transparent 66%);
+      transform:translateX(-115%);animation:meaningLight 9s ease-in-out infinite;
+    }
+    .meaning-copy{position:relative;z-index:1}
+
+    .data-card .big{font-variant-numeric:tabular-nums}
+    .data-card:hover{transform:translateY(-8px) scale(1.015)}
+
+    .reveal{filter:blur(8px)}
+    .reveal.show{filter:blur(0)}
+    .reveal.show .story-card,.reveal.show .data-card,.reveal.show .mini-card{
+      animation:cardRise .85s cubic-bezier(.2,.8,.2,1) both;
+    }
+    .reveal.show .story-card:nth-child(2),.reveal.show .data-card:nth-child(2),.reveal.show .mini-card:nth-child(2){animation-delay:.08s}
+    .reveal.show .story-card:nth-child(3),.reveal.show .data-card:nth-child(3),.reveal.show .mini-card:nth-child(3){animation-delay:.16s}
+    .reveal.show .data-card:nth-child(4),.reveal.show .mini-card:nth-child(4){animation-delay:.24s}
+    .reveal.show .data-card:nth-child(5){animation-delay:.32s}
+    .reveal.show .data-card:nth-child(6){animation-delay:.40s}
+    .reveal.show .data-card:nth-child(7){animation-delay:.48s}
+
+    @keyframes celestialSweep{to{transform:rotate(360deg)}}
+    @keyframes navGleam{0%,55%{transform:translateX(-120%)}75%,100%{transform:translateX(120%)}}
+    @keyframes sealPulse{0%,100%{transform:scale(1);box-shadow:0 0 0 1px rgba(255,246,214,.7),0 0 24px rgba(231,188,98,.26)}50%{transform:scale(1.045);box-shadow:0 0 0 1px rgba(255,246,214,.95),0 0 38px rgba(231,188,98,.46)}}
+    @keyframes slowHalo{to{transform:rotate(360deg)}}
+    @keyframes tagShine{0%,45%{transform:translateX(-120%)}70%,100%{transform:translateX(120%)}}
+    @keyframes goldFlow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+    @keyframes titleBlade{0%,50%{background-position:-120% 50%}78%,100%{background-position:140% 50%}}
+    @keyframes textBreath{0%,100%{filter:drop-shadow(0 0 0 rgba(255,226,150,0))}50%{filter:drop-shadow(0 0 12px rgba(255,226,150,.12))}}
+    @keyframes sectionGold{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+    @keyframes markFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    @keyframes meaningLight{0%,45%{transform:translateX(-115%)}72%,100%{transform:translateX(115%)}}
+    @keyframes cardRise{from{opacity:0;transform:translateY(22px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+    @media(max-width:1050px){
+      .cursor-aura{display:none}
+      .meaning{background-attachment:scroll}
+    }
+    @media(max-width:720px){
+      h1::after{display:none}
+      body::after{opacity:.18}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}
+      .reveal{opacity:1;transform:none;filter:none}
+      .cursor-aura{display:none}
+    }
+
+
+
+    /* === V2 refinement: stronger gilded typography, ceremonial atmosphere, clearer count-up === */
+    :root{
+      --jade-white:rgba(255,248,233,.92);
+      --verm:#b8392d;
+      --imperial-blue:#0b2e73;
+      --gold-bright:#fff6cc;
+      --gold-mid:#e7bc62;
+      --gold-deep:#a86418;
+    }
+
+    body{
+      background:
+        radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(255,238,178,.13), transparent 22vw),
+        radial-gradient(circle at 50% -14%, rgba(255,236,166,.38), transparent 29%),
+        radial-gradient(circle at 82% 12%, rgba(184,57,45,.24), transparent 26%),
+        radial-gradient(circle at 10% 24%, rgba(18,90,170,.32), transparent 28%),
+        radial-gradient(circle at 70% 72%, rgba(255,248,233,.09), transparent 34%),
+        linear-gradient(180deg,#061326 0%,#09265d 22%,#071633 50%,#041021 100%);
+    }
+
+    body::before{
+      opacity:.42;
+      background-image:
+        radial-gradient(circle, rgba(255,238,180,.42) 0 1px, transparent 1.6px),
+        radial-gradient(circle, rgba(255,248,233,.20) 0 1px, transparent 1.8px),
+        repeating-radial-gradient(circle at 50% 18%, transparent 0 68px, rgba(255,226,150,.075) 69px 70px, transparent 71px 138px),
+        radial-gradient(ellipse at 18% 20%, rgba(255,248,233,.09), transparent 36%),
+        radial-gradient(ellipse at 78% 34%, rgba(255,248,233,.07), transparent 38%),
+        linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 120px 120px, 190px 190px, 100% 100%, 100% 100%, 100% 100%, 56px 56px, 56px 56px;
+      background-position:0 0, 30px 70px, center top, left top, right top, center, center;
+      animation:templeDust 42s linear infinite, cloudDrift 56s ease-in-out infinite alternate;
+      mask-image:linear-gradient(to bottom,transparent,black 9%,black 90%,transparent);
+    }
+
+    body::after{
+      opacity:.52;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,248,233,.15), transparent 15%),
+        radial-gradient(circle at 50% 16%, transparent 0 33%, rgba(255,226,150,.11) 33.3% 33.7%, transparent 34%),
+        radial-gradient(circle at 50% 16%, transparent 0 45%, rgba(255,226,150,.08) 45.2% 45.6%, transparent 46%),
+        repeating-conic-gradient(from 0deg at 50% 16%, rgba(255,226,150,.105) 0deg 1deg, transparent 1deg 9deg),
+        repeating-conic-gradient(from 4deg at 50% 16%, rgba(184,57,45,.08) 0deg 1deg, transparent 1deg 18deg);
+      filter:blur(.2px);
+      animation:celestialSweep 96s linear infinite;
+      mask-image:radial-gradient(circle at 50% 16%, black, transparent 58%);
+    }
+
+    .temple-clouds{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:1;
+      opacity:.30;
+      background:
+        radial-gradient(ellipse at 18% 30%, rgba(255,248,233,.15), transparent 28%),
+        radial-gradient(ellipse at 68% 18%, rgba(255,248,233,.10), transparent 31%),
+        radial-gradient(ellipse at 82% 70%, rgba(231,188,98,.10), transparent 34%),
+        linear-gradient(115deg, transparent 0 38%, rgba(255,248,233,.07) 45%, transparent 55% 100%);
+      filter:blur(22px);
+      animation:cloudDrift 38s ease-in-out infinite alternate;
+    }
+
+    h1,.section-title h2,.meaning-copy h2{
+      position:relative;
+      display:inline-block;
+      color:transparent !important;
+      background:
+        linear-gradient(92deg,
+          #7a3f0d 0%,
+          #e2a840 9%,
+          #fff9dd 18%,
+          #d99a2e 28%,
+          #8a4e12 39%,
+          #ffeaa2 48%,
+          #fffef3 53%,
+          #c98922 64%,
+          #fff1aa 76%,
+          #9b5b18 88%,
+          #f6d47a 100%);
+      background-size:420% 100%;
+      -webkit-background-clip:text;
+      background-clip:text;
+      animation:liquidGold 6.2s ease-in-out infinite;
+      text-shadow:
+        0 0 1px rgba(255,252,225,.95),
+        0 0 18px rgba(255,226,150,.34),
+        0 0 42px rgba(231,188,98,.22),
+        0 18px 56px rgba(0,0,0,.56);
+    }
+
+    h1{
+      filter:drop-shadow(0 26px 55px rgba(0,0,0,.58)) drop-shadow(0 0 18px rgba(231,188,98,.24));
+      animation:liquidGold 5.2s ease-in-out infinite, titlePulse 4.8s ease-in-out infinite;
+    }
+
+    h1::before,.section-title h2::before,.meaning-copy h2::before{
+      content:attr(data-shine);
+      position:absolute;
+      inset:0;
+      color:transparent;
+      background:
+        linear-gradient(108deg,
+          transparent 0%,
+          transparent 34%,
+          rgba(255,255,255,.18) 42%,
+          rgba(255,255,255,1) 50%,
+          rgba(255,235,154,.55) 56%,
+          transparent 66%,
+          transparent 100%);
+      background-size:260% 100%;
+      -webkit-background-clip:text;
+      background-clip:text;
+      animation:goldBlade 4.8s cubic-bezier(.55,.05,.25,1) infinite;
+      filter:drop-shadow(0 0 10px rgba(255,246,206,.55));
+      pointer-events:none;
+    }
+
+    h1::after,.section-title h2::after,.meaning-copy h2::after{
+      content:attr(data-shine);
+      position:absolute;
+      inset:0;
+      color:transparent;
+      -webkit-text-stroke:1px rgba(255,238,172,.32);
+      text-shadow:0 0 20px rgba(255,226,150,.25), 0 0 46px rgba(231,188,98,.14);
+      pointer-events:none;
+      opacity:.75;
+    }
+
+    .section-title h2 span,.meaning-copy h2 span{
+      position:relative;
+      z-index:2;
+      color:rgba(255,248,233,.62) !important;
+      -webkit-text-fill-color:rgba(255,248,233,.62);
+      background:none !important;
+      text-shadow:none;
+    }
+
+    .section-title::before{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-22px;
+      width:min(380px,58vw);
+      height:10px;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at left, rgba(255,246,206,.75), transparent 18%),
+        linear-gradient(90deg, rgba(255,226,150,.85), rgba(184,57,45,.36), transparent);
+      filter:blur(7px);
+      opacity:.72;
+      transform-origin:left center;
+      transform:scaleX(.18);
+      transition:transform 1.4s cubic-bezier(.2,.8,.2,1), opacity 1.4s ease;
+    }
+    .reveal.show .section-title::before{transform:scaleX(1);opacity:.9}
+
+    .data-card{
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,248,233,.13), transparent 42%),
+        linear-gradient(180deg,rgba(255,226,150,.17),rgba(184,57,45,.055) 46%,rgba(255,248,233,.052));
+    }
+    .data-card .big{
+      color:transparent;
+      background:linear-gradient(95deg,#fff9df,#e7bc62,#fffef4,#be7c1f,#fff1ad);
+      background-size:260% 100%;
+      -webkit-background-clip:text;background-clip:text;
+      animation:dataGold 4.8s ease-in-out infinite;
+      text-shadow:none;
+      filter:drop-shadow(0 0 18px rgba(255,226,150,.30));
+    }
+    .data-card.counting .big{animation:dataGold 2.4s ease-in-out infinite, digitPop .55s ease both}
+
+    @keyframes liquidGold{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+    @keyframes goldBlade{0%,38%{background-position:-140% 50%;opacity:.05}48%{opacity:1}74%,100%{background-position:150% 50%;opacity:.18}}
+    @keyframes titlePulse{0%,100%{filter:drop-shadow(0 26px 55px rgba(0,0,0,.58)) drop-shadow(0 0 16px rgba(231,188,98,.20))}50%{filter:drop-shadow(0 26px 55px rgba(0,0,0,.58)) drop-shadow(0 0 30px rgba(255,226,150,.38))}}
+    @keyframes dataGold{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+    @keyframes digitPop{0%{transform:translateY(8px) scale(.96);opacity:.65}100%{transform:translateY(0) scale(1);opacity:1}}
+    @keyframes templeDust{from{background-position:0 0,30px 70px,center top,left top,right top,center,center}to{background-position:240px -180px,-160px 280px,center top,left top,right top,center,center}}
+    @keyframes cloudDrift{0%{transform:translate3d(-1.5%,0,0) scale(1)}100%{transform:translate3d(1.5%,-1%,0) scale(1.03)}}
+
+    @media(max-width:720px){
+      h1::before,h1::after,.section-title h2::before,.section-title h2::after,.meaning-copy h2::before,.meaning-copy h2::after{display:none}
+      .temple-clouds{opacity:.20}
+    }
+
+
+
+    /* === V3: stronger ceremonial gilding + elegant Temple of Heaven atmospheric background === */
+    :root{
+      --v3-gold-1:#fffdf0;
+      --v3-gold-2:#fff1a8;
+      --v3-gold-3:#e1a338;
+      --v3-gold-4:#8e4b0c;
+      --v3-red:#9f241f;
+      --v3-blue:#082c68;
+      --v3-jade:#fff8e9;
+    }
+
+    body{
+      background:
+        radial-gradient(circle at var(--cursor-x, 50%) var(--cursor-y, 30%), rgba(255,239,183,.16), transparent 21vw),
+        radial-gradient(ellipse at 50% -10%, rgba(255,244,205,.34), transparent 30%),
+        radial-gradient(ellipse at 86% 13%, rgba(159,36,31,.25), transparent 29%),
+        radial-gradient(ellipse at 12% 20%, rgba(16,83,168,.34), transparent 28%),
+        radial-gradient(ellipse at 70% 58%, rgba(255,248,233,.11), transparent 38%),
+        linear-gradient(180deg,#030914 0%,#071633 24%,#0b2d68 47%,#071633 70%,#020711 100%);
+    }
+
+    body::before{
+      opacity:.55 !important;
+      background-image:
+        radial-gradient(circle, rgba(255,239,183,.62) 0 1px, transparent 1.8px),
+        radial-gradient(circle, rgba(255,248,233,.27) 0 1px, transparent 1.7px),
+        repeating-radial-gradient(circle at 50% 10%, transparent 0 64px, rgba(255,226,150,.105) 65px 66px, transparent 67px 132px),
+        repeating-conic-gradient(from 0deg at 50% 10%, rgba(255,226,150,.07) 0deg 1.15deg, transparent 1.15deg 10deg),
+        radial-gradient(ellipse at 18% 28%, rgba(255,248,233,.13), transparent 32%),
+        radial-gradient(ellipse at 78% 32%, rgba(255,248,233,.10), transparent 34%),
+        radial-gradient(ellipse at 50% 86%, rgba(159,36,31,.13), transparent 48%),
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.022) 1px, transparent 1px);
+      background-size:118px 118px, 190px 190px, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 58px 58px, 58px 58px;
+      background-position:0 0, 60px 110px, center top, center top, left top, right top, center bottom, center, center;
+      animation:v3StarDrift 70s linear infinite, v3CloudBreathe 18s ease-in-out infinite alternate !important;
+      mask-image:linear-gradient(to bottom,transparent,black 6%,black 92%,transparent);
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      inset:-12%;
+      z-index:0;
+      pointer-events:none;
+      opacity:.43 !important;
+      background:
+        radial-gradient(circle at 50% 9%, transparent 0 20%, rgba(255,226,150,.11) 20.25% 20.55%, transparent 20.8%),
+        radial-gradient(circle at 50% 9%, transparent 0 32%, rgba(255,248,233,.075) 32.2% 32.55%, transparent 32.85%),
+        radial-gradient(circle at 50% 9%, transparent 0 44%, rgba(159,36,31,.075) 44.2% 44.55%, transparent 44.85%),
+        repeating-conic-gradient(from 0deg at 50% 9%, rgba(255,226,150,.08) 0deg 1deg, transparent 1deg 7.5deg),
+        radial-gradient(ellipse at 50% 5%, rgba(255,248,233,.12), transparent 32%);
+      filter:blur(.15px);
+      transform-origin:50% 9%;
+      animation:v3AltarTurn 120s linear infinite;
+      mask-image:radial-gradient(circle at 50% 9%, black 0 18%, rgba(0,0,0,.62) 34%, transparent 62%);
+    }
+
+    .temple-clouds{
+      opacity:.38 !important;
+      background:
+        radial-gradient(ellipse at 16% 22%, rgba(255,248,233,.18), transparent 30%),
+        radial-gradient(ellipse at 64% 19%, rgba(255,248,233,.13), transparent 33%),
+        radial-gradient(ellipse at 85% 69%, rgba(255,226,150,.12), transparent 35%),
+        radial-gradient(ellipse at 28% 76%, rgba(159,36,31,.10), transparent 42%),
+        linear-gradient(112deg, transparent 0 32%, rgba(255,248,233,.075) 43%, transparent 58% 100%);
+      filter:blur(24px);
+      animation:v3CloudFloat 42s ease-in-out infinite alternate !important;
+    }
+
+    h1,.section-title h2,.meaning-copy h2{
+      isolation:isolate;
+      background:
+        linear-gradient(100deg,
+          #5c2b06 0%,
+          #a86418 7%,
+          #f0bd56 14%,
+          #fff8d6 20%,
+          #c27a17 29%,
+          #6a3308 38%,
+          #fff0a8 47%,
+          #ffffff 51%,
+          #f3c454 56%,
+          #93500d 67%,
+          #ffed9d 78%,
+          #fffef1 84%,
+          #b96d13 92%,
+          #fff1ad 100%) !important;
+      background-size:620% 100% !important;
+      -webkit-background-clip:text !important;
+      background-clip:text !important;
+      -webkit-text-fill-color:transparent;
+      color:transparent !important;
+      animation:v3MoltenGold 4.8s ease-in-out infinite, v3GoldBreath 3.8s ease-in-out infinite !important;
+      text-shadow:
+        0 0 1px rgba(255,255,245,.95),
+        0 0 13px rgba(255,238,172,.42),
+        0 0 32px rgba(231,188,98,.28),
+        0 0 62px rgba(231,188,98,.16),
+        0 22px 56px rgba(0,0,0,.62) !important;
+    }
+
+    h1{animation-duration:4.2s,3.4s !important;}
+
+    h1::before,.section-title h2::before,.meaning-copy h2::before{
+      background:
+        linear-gradient(112deg,
+          transparent 0%,
+          transparent 28%,
+          rgba(255,255,255,.08) 36%,
+          rgba(255,255,255,.92) 45%,
+          #fff9cf 49%,
+          rgba(255,255,255,.95) 53%,
+          rgba(255,226,150,.38) 59%,
+          transparent 69%,
+          transparent 100%) !important;
+      background-size:360% 100% !important;
+      animation:v3GoldSweep 3.6s cubic-bezier(.45,.02,.2,1) infinite !important;
+      filter:drop-shadow(0 0 16px rgba(255,246,206,.70)) drop-shadow(0 0 26px rgba(231,188,98,.32)) !important;
+      mix-blend-mode:screen;
+    }
+
+    h1::after,.section-title h2::after,.meaning-copy h2::after{
+      -webkit-text-stroke:1.25px rgba(255,242,181,.48) !important;
+      text-shadow:
+        0 0 10px rgba(255,255,240,.35),
+        0 0 28px rgba(255,226,150,.35),
+        0 0 58px rgba(231,188,98,.22) !important;
+      opacity:.9 !important;
+    }
+
+    .section-title h2{
+      padding-bottom:.08em;
+    }
+
+    .section-title h2 span,.meaning-copy h2 span{
+      -webkit-text-fill-color:rgba(255,248,233,.66) !important;
+      color:rgba(255,248,233,.66) !important;
+      background:none !important;
+      animation:none !important;
+    }
+
+    .section-title::before{
+      height:14px !important;
+      background:
+        radial-gradient(circle at left, rgba(255,255,240,.96), transparent 16%),
+        linear-gradient(90deg, rgba(255,246,206,.96), rgba(231,188,98,.72) 28%, rgba(159,36,31,.35) 62%, transparent) !important;
+      filter:blur(8px) !important;
+    }
+
+    .data-card .big{
+      min-height:1.05em;
+      font-variant-numeric:tabular-nums;
+      background:linear-gradient(98deg,#fffdf0,#fff0a8,#d79224,#fffef4,#b56b12,#fff4bd) !important;
+      background-size:420% 100% !important;
+      -webkit-background-clip:text !important;
+      background-clip:text !important;
+      -webkit-text-fill-color:transparent;
+      animation:v3MoltenGold 3.4s ease-in-out infinite !important;
+      filter:drop-shadow(0 0 18px rgba(255,226,150,.38)) drop-shadow(0 0 34px rgba(231,188,98,.18)) !important;
+    }
+    .data-card.counting{
+      transform:translateY(-8px) scale(1.018);
+      border-color:rgba(255,238,172,.72) !important;
+      box-shadow:0 34px 90px rgba(0,0,0,.32),0 0 42px rgba(255,226,150,.18) !important;
+    }
+    .data-card.counting .big{
+      animation:v3MoltenGold 1.8s ease-in-out infinite, v3DigitRoll .42s ease both !important;
+    }
+
+    @keyframes v3MoltenGold{0%{background-position:0% 50%}45%{background-position:100% 50%}100%{background-position:0% 50%}}
+    @keyframes v3GoldSweep{0%,28%{background-position:-180% 50%;opacity:.08}45%{opacity:1}76%,100%{background-position:180% 50%;opacity:.18}}
+    @keyframes v3GoldBreath{0%,100%{filter:drop-shadow(0 0 10px rgba(255,226,150,.18))}50%{filter:drop-shadow(0 0 26px rgba(255,226,150,.42))}}
+    @keyframes v3DigitRoll{0%{transform:translateY(12px) scale(.94);opacity:.62}100%{transform:translateY(0) scale(1);opacity:1}}
+    @keyframes v3StarDrift{from{background-position:0 0,60px 110px,center top,center top,left top,right top,center bottom,center,center}to{background-position:280px -220px,-220px 310px,center top,center top,left top,right top,center bottom,center,center}}
+    @keyframes v3CloudBreathe{0%{filter:brightness(1) saturate(1)}100%{filter:brightness(1.08) saturate(1.04)}}
+    @keyframes v3CloudFloat{0%{transform:translate3d(-2%,.5%,0) scale(1)}100%{transform:translate3d(2%,-1%,0) scale(1.04)}}
+    @keyframes v3AltarTurn{to{transform:rotate(360deg)}}
+
+  
+
+    /* === V4.1: data cards readability fix only === */
+    .data-grid{
+      grid-template-columns:repeat(7,minmax(0,1fr)) !important;
+      gap:10px !important;
+    }
+    .data-card{
+      min-height:170px !important;
+      padding:22px 12px !important;
+      overflow:visible !important;
+    }
+    .data-card .big{
+      font-size:clamp(30px,3.15vw,48px) !important;
+      letter-spacing:-.04em !important;
+      line-height:1.02 !important;
+      white-space:nowrap !important;
+    }
+    .data-card .label{
+      margin-top:11px !important;
+      font-size:15px !important;
+      line-height:1.22 !important;
+      letter-spacing:.02em !important;
+      white-space:normal !important;
+    }
+    .data-card .en{
+      margin-top:6px !important;
+      font-size:10px !important;
+      line-height:1.28 !important;
+      letter-spacing:.075em !important;
+      overflow-wrap:break-word !important;
+      text-transform:uppercase;
+    }
+    @media(max-width:1180px){
+      .data-grid{grid-template-columns:repeat(4,1fr) !important;}
+      .data-card .big{font-size:clamp(34px,4vw,52px) !important;}
+      .data-card .label{font-size:16px !important;}
+      .data-card .en{font-size:11px !important;}
+    }
+    @media(max-width:720px){
+      .data-grid{grid-template-columns:1fr 1fr !important;}
+      .data-card{min-height:160px !important;padding:20px 12px !important;}
+      .data-card .big{font-size:clamp(32px,9vw,46px) !important;}
+    }
+</style>
+</head>
+<body>
+  <audio id="bgm" src="bgm.mp3" preload="auto" loop></audio>
+  <div class="temple-clouds" aria-hidden="true"></div>
+  <div class="cursor-aura" aria-hidden="true"></div>
+  <nav class="nav">
+    <div class="brand"><span class="seal">天</span> 天坛祈年殿</div>
+    <div class="nav-links">
+      <a href="#history">历史</a>
+      <a href="#form">形制</a>
+      <a href="#inside">内殿</a>
+      <a href="#details">细节</a>
+      <a href="#meaning">意义</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="reveal">
+      <div class="eyebrow">Heaven · Ritual · Timber Architecture</div>
+      <h1>天坛祈年殿</h1>
+      <div class="subtitle">The Hall of Prayer for Good Harvests</div>
+      <p class="lead">蓝瓦承天，白石托殿。祈年殿以圆形殿身、三重屋顶和宏大的木构，把古代中国的敬天礼制凝成一座建筑。</p>
+      <p class="lead-en">An imperial hall where architecture becomes cosmology: blue tiles for Heaven, white marble for ritual elevation, and timber structure for sacred order.</p>
+    </div>
+
+    <div class="hero-stack reveal">
+      <figure class="main-photo">
+        <img src="images/tp1.jpg" alt="天坛祈年殿正面远景" />
+      </figure>
+      <div class="floating-note">
+        <strong>圆形殿宇，指向苍穹</strong>
+        <span>Its circular plan and triple roof turn the building into an image of the sky.</span>
+      </div>
+    </div>
+  </header>
+
+  <section id="history">
+    <div class="inner reveal">
+      <div class="section-title">
+        <h2>一座国家礼制建筑<span>A monument of imperial ritual order</span></h2>
+        <div class="mark">01</div>
+      </div>
+      <div class="story-grid">
+        <article class="story-card">
+          <div class="num">1420</div>
+          <h3>始建于明永乐时期</h3>
+          <p>天坛与北京城营建相伴而生，是明清皇帝祭天、祈谷的重要场所。</p>
+          <p class="en">Built with imperial Beijing, it became a supreme site for worshipping Heaven and praying for harvests.</p>
+        </article>
+        <article class="story-card">
+          <div class="num">祈谷</div>
+          <h3>为天下祈丰年</h3>
+          <p>在农业文明中，丰收关乎国运。皇帝在此以“天子”身份代天下祈年。</p>
+          <p class="en">Harvest ritual linked the emperor, the people, agriculture, and the Mandate of Heaven.</p>
+        </article>
+        <article class="story-card">
+          <div class="num">1998</div>
+          <h3>世界文化遗产</h3>
+          <p>天坛以建筑、景观与宇宙观的统一，成为中国文化遗产的代表。</p>
+          <p class="en">A UNESCO World Heritage landmark of architecture, landscape, and cosmology.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="form">
+    <div class="inner reveal">
+      <div class="section-title">
+        <h2>外观：蓝瓦、红墙、白石<span>Exterior: blue roof, red wall, white marble</span></h2>
+        <div class="mark">02</div>
+      </div>
+      <div class="cinema">
+        <figure class="big-img">
+          <img src="images/tp2.jpg" alt="祈年殿全景与台基" />
+          <figcaption class="cap"><strong>三层台基</strong><span>White marble terraces raise the hall into a ritual stage.</span></figcaption>
+        </figure>
+        <div class="side-col">
+          <figure class="side-img">
+            <img src="images/tp5.jpeg" alt="祈年殿屋顶近景" />
+            <figcaption class="cap"><strong>蓝瓦如天</strong><span>The azure roof directly symbolizes Heaven.</span></figcaption>
+          </figure>
+          <figure class="side-img">
+            <img src="images/tp6.jpg" alt="门框中的祈年殿" />
+            <figcaption class="cap"><strong>门中见殿</strong><span>A framed view turns approach into ceremony.</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="inner reveal split">
+      <div class="text-panel">
+        <h3>圆，象征天；<br>高，产生敬畏。</h3>
+        <p>祈年殿没有复杂的叙事，却有极强的视觉秩序：圆形、层叠、对称、上升。人站在台基下，自然感到尺度的转换。</p>
+        <p class="en">The hall speaks through form: circular, layered, symmetrical, and ascending. Its scale turns space into reverence.</p>
+        <div class="keywords">
+          <span class="tag">圆形殿身</span>
+          <span class="tag">三重攒尖顶</span>
+          <span class="tag">蓝色琉璃瓦</span>
+          <span class="tag">白石台基</span>
+        </div>
+      </div>
+      <figure class="wide-img">
+        <img src="images/tp3.jpg" alt="祈年殿正面近景" />
+        <figcaption class="cap"><strong>历史一刻</strong><span>A historic moment before the Hall of Prayer for Good Harvests.</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="inside">
+    <div class="inner reveal">
+      <div class="section-title">
+        <h2>内殿：柱网与藻井<span>Interior: columns and celestial ceiling</span></h2>
+        <div class="mark">03</div>
+      </div>
+      <div class="details-grid">
+        <figure class="detail-card tall">
+          <img src="images/tp7.jpg" alt="祈年殿内殿" />
+          <figcaption class="cap"><strong>金龙朱柱</strong><span>Red columns and gilded dragons create imperial solemnity.</span></figcaption>
+        </figure>
+        <figure class="detail-card tall">
+          <img src="images/tp9.jpg" alt="祈年殿藻井" />
+          <figcaption class="cap"><strong>穹顶如天象</strong><span>The coffered ceiling gathers color, order, and cosmic imagination.</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="details">
+    <div class="inner reveal">
+      <div class="section-title">
+        <h2>细节：彩画中的宇宙秩序<span>Details: painted order and sacred color</span></h2>
+        <div class="mark">04</div>
+      </div>
+      <div class="cinema">
+        <figure class="wide-img">
+          <img src="images/tp8.jpg" alt="祈年殿彩画细节" />
+          <figcaption class="cap"><strong>梁枋彩画</strong><span>Color patterns transform structure into ritual ornament.</span></figcaption>
+        </figure>
+        <div class="side-col">
+          <figure class="side-img">
+            <img src="images/tp10.jpg" alt="祈年殿夜景" />
+            <figcaption class="cap"><strong>月下蓝殿</strong><span>At night, the hall appears almost celestial.</span></figcaption>
+          </figure>
+          <figure class="side-img">
+            <img src="images/tp4.jpg" alt="祈年殿当代地标场景" />
+            <figcaption class="cap"><strong>当代地标</strong><span>The hall remains an image of China on the world stage.</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="meaning" class="meaning">
+    <div class="meaning-copy reveal">
+      <h2>它不是一座孤立的殿宇，而是一种世界观。</h2>
+      <p>祈年殿把天、地、君王、农时与建筑秩序联系在一起。它的壮丽，来自形式之美，也来自礼制之重。</p>
+      <p class="en">The Hall of Prayer for Good Harvests is not merely a building. It is a worldview made visible through architecture.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="inner reveal">
+      <div class="section-title">
+        <h2>天坛数字<span>Temple of Heaven in Numbers</span></h2>
+        <div class="mark">05</div>
+      </div>
+      <div class="data-grid">
+        <article class="data-card"><div class="big">1420</div><div class="label">始建年代</div><div class="en">Founded in Ming Yongle Era</div></article>
+        <article class="data-card"><div class="big">1890</div><div class="label">复建年代</div><div class="en">Rebuilt in Qing Guangxu Era</div></article>
+        <article class="data-card"><div class="big">600+</div><div class="label">年历史</div><div class="en">Years of History</div></article>
+        <article class="data-card"><div class="big">38m</div><div class="label">殿高</div><div class="en">Hall Height</div></article>
+        <article class="data-card"><div class="big">32m</div><div class="label">殿径</div><div class="en">Hall Diameter</div></article>
+        <article class="data-card"><div class="big">28</div><div class="label">楠木巨柱</div><div class="en">Nanmu Pillars</div></article>
+        <article class="data-card"><div class="big">1998</div><div class="label">列入世遗</div><div class="en">UNESCO Inscription</div></article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="inner reveal">
+      <div class="section-title">
+        <h2>文化地位<span>Cultural significance</span></h2>
+        <div class="mark">06</div>
+      </div>
+      <div class="final-grid">
+        <article class="mini-card"><strong>礼制核心</strong><p>皇帝代天下祈谷，体现国家祭祀的最高等级。</p><small>Supreme ritual space of the imperial state.</small></article>
+        <article class="mini-card"><strong>宇宙象征</strong><p>圆形、蓝瓦、数字与方位共同表达“天人秩序”。</p><small>Cosmology encoded in space and form.</small></article>
+        <article class="mini-card"><strong>木构典范</strong><p>宏大屋顶与柱网体系展现中国木构建筑的成熟。</p><small>A masterpiece of Chinese timber architecture.</small></article>
+        <article class="mini-card"><strong>北京名片</strong><p>从皇家坛庙到公共遗产，成为世界认识中国的经典图像。</p><small>A defining cultural image of Beijing and China.</small></article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p><strong>天坛祈年殿</strong> · The Hall of Prayer for Good Harvests</p>
+  </footer>
+
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const setShineText = () => {
+      document.querySelectorAll('h1, .section-title h2, .meaning-copy h2').forEach(title => {
+        const clone = title.cloneNode(true);
+        clone.querySelectorAll('span').forEach(span => span.remove());
+        const pure = clone.textContent.trim();
+        title.dataset.shine = pure;
+      });
+    };
+    setShineText();
+
+    const revealObserver = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },{threshold:.16});
+    document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+
+    const numberObserver = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(!entry.isIntersecting) return;
+        const card = entry.target;
+        const big = card.querySelector('.big');
+        const finalText = big.textContent.trim();
+        const match = finalText.match(/^(\d+)(.*)$/);
+        if(!match || reduceMotion){
+          card.classList.add('counting');
+          numberObserver.unobserve(card);
+          return;
+        }
+        const target = Number(match[1]);
+        const suffix = match[2] || '';
+        const duration = 1250;
+        const start = performance.now();
+        card.classList.add('counting');
+        const tick = now => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          big.textContent = Math.round(target * eased) + suffix;
+          if(progress < 1){
+            requestAnimationFrame(tick);
+          }else{
+            big.textContent = finalText;
+            setTimeout(()=>card.classList.remove('counting'), 650);
+          }
+        };
+        requestAnimationFrame(tick);
+        numberObserver.unobserve(card);
+      });
+    },{threshold:.42});
+    document.querySelectorAll('.data-card').forEach(card=>numberObserver.observe(card));
+
+    document.querySelectorAll('.story-card,.text-panel,.mini-card,.data-card,.floating-note,.big-img,.side-img,.wide-img,.square-img,.detail-card,.main-photo').forEach(el=>{
+      el.addEventListener('pointermove', e=>{
+        const r = el.getBoundingClientRect();
+        el.style.setProperty('--mx', `${((e.clientX-r.left)/r.width)*100}%`);
+        el.style.setProperty('--my', `${((e.clientY-r.top)/r.height)*100}%`);
+      });
+    });
+
+    window.addEventListener('pointermove', e=>{
+      document.documentElement.style.setProperty('--cursor-x', `${e.clientX}px`);
+      document.documentElement.style.setProperty('--cursor-y', `${e.clientY}px`);
+      const card = document.querySelector('.main-photo');
+      if(!card || window.innerWidth < 1050 || reduceMotion) return;
+      const x = (e.clientX / window.innerWidth - .5) * 8;
+      const y = (e.clientY / window.innerHeight - .5) * 6;
+      card.style.transform = `rotateY(${-7 + x}deg) rotateX(${2 - y}deg)`;
+    });
+
+    window.addEventListener('scroll', () => {
+      if (reduceMotion) return;
+      const y = window.scrollY;
+      document.querySelectorAll('.mark').forEach((el, i)=>{
+        el.style.transform = `translateY(${Math.sin((y/240)+i)*7}px)`;
+      });
+    }, {passive:true});
+
+
+    // Background music: local bgm.mp3, looped.
+    const bgm = document.getElementById('bgm');
+    if (bgm) {
+      bgm.volume = 0.35;
+
+      const startBgm = () => {
+        bgm.play().catch(() => {});
+        window.removeEventListener('click', startBgm);
+        window.removeEventListener('touchstart', startBgm);
+        window.removeEventListener('keydown', startBgm);
+      };
+
+      bgm.play().catch(() => {
+        window.addEventListener('click', startBgm, { once: true });
+        window.addEventListener('touchstart', startBgm, { once: true });
+        window.addEventListener('keydown', startBgm, { once: true });
+      });
+    }
+
+    // V3 reinforcement: ensure every visible section title receives gilded overlay text.
+    document.querySelectorAll('h1, .section-title h2, .meaning-copy h2').forEach(title => {
+      const clean = title.cloneNode(true);
+      clean.querySelectorAll('span').forEach(span => span.remove());
+      title.dataset.shine = clean.textContent.trim();
+    });
+  </script>
+</body>
+</html>
